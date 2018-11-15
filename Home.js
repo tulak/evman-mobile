@@ -11,15 +11,15 @@ import {Platform, StyleSheet, View, StatusBar, SafeAreaView} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Container, Header, Content, Button, Title, Text, Right, Left, Body, Badge, Footer, FooterTab } from 'native-base';
 import {createBottomTabNavigator} from 'react-navigation-tabs'
-import Events from './components/Events'
-import Talks from './components/Talks'
+import EventsTab from './components/EventsTab'
+import TalksTab from './components/TalksTab'
 
 const routes = [
-  {name: 'Events', label: 'Events', icon: 'train', screen: Events },
-  {name: 'Talks', label: 'Talks', icon: 'file-text', screen: Talks },
-  {name: 'Calendar', label: 'Calendar', icon: 'calendar', screen: Talks },
-  {name: 'Teams', label: 'Teams', icon: 'group', screen: Talks },
-  {name: 'Settings', label: 'Settings', icon: 'cogs', screen: Events },
+  {name: 'Events', label: 'Events', icon: 'train', screen: EventsTab },
+  {name: 'Talks', label: 'Talks', icon: 'file-text', screen: TalksTab },
+  {name: 'Calendar', label: 'Calendar', icon: 'calendar', screen: TalksTab },
+  {name: 'Teams', label: 'Teams', icon: 'group', screen: TalksTab },
+  {name: 'Settings', label: 'Settings', icon: 'cogs', screen: EventsTab },
 ]
 
 const bottomBarRoutes = routes.map((route) => (
@@ -28,7 +28,7 @@ const bottomBarRoutes = routes.map((route) => (
     navigationOptions: {
       tabBarLabel: route.label,
       tabBarIcon: ({tintColor}) => (
-        <Icon name={route.icon} size={24} color={tintColor} />
+        <Icon name={route.icon} size={28} color={tintColor} />
       )
     }
   }
@@ -36,20 +36,20 @@ const bottomBarRoutes = routes.map((route) => (
 
 const BottomTabNavigator = createBottomTabNavigator(bottomBarRoutes, {
     tabBarOptions: {
+      activeTintColor: '#fff',
+      activeBackgroundColor: '#555',
       tabStyle: {
         paddingTop: 15,
-        paddingBottom: 15,
-        height: 80,
+        paddingBottom: 5,
+        height: 70,
         borderColor: 'green',
         borderWidth: 0
       },
       labelStyle: {
-        marginTop: 10
+        marginTop: 5
       },
       style: {
         height: 70,
-        // borderWidth: 1,
-        // borderColor: 'red'
       }
     }
   }
