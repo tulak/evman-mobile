@@ -1,4 +1,4 @@
-package com.evmanreactnative;
+package com.evman;
 
 import android.app.Application;
 
