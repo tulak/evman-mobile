@@ -31,8 +31,8 @@ export default class Event extends Component {
     return (
       <ListItem onPress={() => this.props.navigation.navigate('Show', {eventId: event.id})} style={style.container}>
         <Left style={[style.date]}>
-          <Moment format="DD" style={[getStyles('bold', 'redText')]}>{event.beginsAt}</Moment>
-          <Moment format="MMM" filter={(s) => s.toUpperCase()}>{event.beginsAt}</Moment>       
+          <Moment format="MMM" style={[getStyles('redText')]} filter={(s) => s.toUpperCase()}>{event.beginsAt}</Moment>       
+          <Moment format="DD" style={[getStyles()]}>{event.beginsAt}</Moment>
         </Left>
         <Right style={[getStyles('verticalAlignCenter'), style.label]}>
           <Text style={[getStyles('bold')]}>{event.name}</Text>

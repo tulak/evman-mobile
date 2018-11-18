@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export const COMMITTED_EVENTS_QUERY = gql`query {
   committed_events:events(
-    scopes:["actual","committed"],
+    scopes:["actual","unarchived", "committed"],
     onlyCurrentTeam: true
   ) {
     id
@@ -14,7 +14,7 @@ export const COMMITTED_EVENTS_QUERY = gql`query {
 
 export const TRACKED_EVENTS_QUERY = gql`query {
   tracked_events:events(
-    scopes:["tracked"],
+    scopes:["actual","unarchived","tracked"],
     onlyCurrentTeam: true
   ) {
     id
@@ -26,7 +26,7 @@ export const TRACKED_EVENTS_QUERY = gql`query {
 
 export const CFP_DEADLINE_EVENTS_QUERY = gql`query {
   cfp_deadline_events:events(
-    scopes:["within_cfp_deadline"],
+    scopes:["actual","unarchived","within_cfp_deadline"],
     onlyCurrentTeam: true
   ) {
     id

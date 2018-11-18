@@ -4,7 +4,6 @@ import { yellow } from 'ansi-colors';
 
 let styles = StyleSheet.create({
   default: {
-    flex: 1,
     alignItems: 'center',
   },
 
@@ -21,10 +20,14 @@ let styles = StyleSheet.create({
     flexDirection: 'row'
   },
 
-  'space-between': { justifyContent: 'space-between' },
-  'space-around': { justifyContent: 'space-around' },
-  'space-evenly': { justifyContent: "space-evenly"},
-  'stretch-items': { alignItems: 'stretch', backgroundColor: '#eaeaea' }
+  wrap: {
+    flexWrap: 'wrap',
+  },
+
+  spaceBetween: { justifyContent: 'space-between' },
+  spaceAround: { justifyContent: 'space-around' },
+  spaceEvenly: { justifyContent: "space-evenly"},
+  stretchItems: { alignItems: 'stretch', backgroundColor: '#eaeaea' }
 })
 
 export default class FlexView extends Component {
@@ -41,6 +44,12 @@ export default class FlexView extends Component {
     usedStyles.push(styles.default)
     let inlineStyles = this.props.style
     if(inlineStyles) usedStyles.push(inlineStyles)
-    return (<View style={usedStyles}>{this.props.children}</View>)
+    // style={usedStyles}
+    return (
+      <View style={usedStyles}>
+        {this.props.children }
+        {/* <Text>{JSON.stringify(usedStyles)}</Text> */}
+      </View>
+    )
   }
 }

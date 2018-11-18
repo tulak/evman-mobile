@@ -29,18 +29,16 @@ export default class EventList extends Component {
             return (<CenteredNotice refreshing={loading} onRefresh={() => refetch()} text="No events to show" />)
 
           return (
-            <View>
-              <FlatList
-                contentContainerStyle={{height: '100%'}}
-                data={events}
-                renderItem={({item}) => (
-                  <Event event={item} navigation={this.props.navigation} /> 
-                )}
-                keyExtractor={(event) => event.id.toString() }
-                onRefresh={refetch}
-                refreshing={loading}
-              />
-            </View>
+            <FlatList
+              contentContainerStyle={{flex: 1}}
+              data={events}
+              renderItem={({item}) => (
+                <Event event={item} navigation={this.props.navigation} /> 
+              )}
+              keyExtractor={(event) => event.id.toString() }
+              onRefresh={refetch}
+              refreshing={loading}
+            />
           )
         }}
       </Query>
