@@ -28,7 +28,7 @@ export default class Dashboard extends Component {
             </Button>
           </Right>
         </Header>
-        <Tabs renderTabBar={()=> <ScrollableTab />}>
+        <Tabs renderTabBar={()=> <ScrollableTab style={{ backgroundColor: "#555" }}/>}>
           <Tab heading="Tracked">
             <EventList query={TRACKED_EVENTS_QUERY} navigation={navigation} extractEvents={(d) => d.tracked_events} />
           </Tab>

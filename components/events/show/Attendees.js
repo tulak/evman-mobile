@@ -54,7 +54,7 @@ export default class Attendees extends Component {
       <View style={{flex: 1}}>
         {body}
         
-        <Modal visible={this.state.showList} animationType='fade' u>
+        <Modal visible={this.state.showList} animationType='fade' onRequestClose={this.toggleList}>
           <AttendeeList 
             eventName={eventName} 
             attendees={attendees} 

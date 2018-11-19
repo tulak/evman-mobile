@@ -43,7 +43,7 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <StyleProvider  style={getTheme(platform)}>
+      <StyleProvider style={getTheme(platform)}>
         <ApolloProvider client={client}>
           <Home/>
         </ApolloProvider>
