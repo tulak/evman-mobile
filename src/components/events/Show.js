@@ -6,11 +6,10 @@ import {Card, CardItem, Text, Container, Content, Header, Title, Body, Left, But
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import AttendeeAvatar from './show/AttendeeAvatar'
-import {CenteredNotice, Hr} from '~/components/layout/'
+import {CenteredNotice, Hr, FlexView} from '~/components/layout/'
 import {SHOW_QUERY} from '~/queries/events/show'
 import Attendees from './show/Attendees'
-import StatusButton from "./show/StatusButton";
-import FlexView from "../layout/FlexView";
+import StatusButton from "./show/StatusButton"
 
 export default class Show extends Component {
   static navigationOptions = ({navigation}) => {
