@@ -26,7 +26,7 @@ export default class Show extends Component {
           <Right></Right>
         </Header>
         <FlatList 
-          contentContainerStyle={[style.list, attendees.length == 0 && style.emptyList]}
+          contentContainerStyle={attendees.length == 0 && getStyles('emptyList')}
           disableVirtualization={false}
           data={attendees}
           keyExtractor={(attendee) => attendee.id.toString()}

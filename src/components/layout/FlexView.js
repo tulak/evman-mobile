@@ -7,6 +7,10 @@ let styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  flex: {
+    flex: 1
+  },
+
   debug: {
     borderColor: 'green',
     borderWidth: 1
@@ -27,6 +31,10 @@ let styles = StyleSheet.create({
   spaceBetween: { justifyContent: 'space-between' },
   spaceAround: { justifyContent: 'space-around' },
   spaceEvenly: { justifyContent: "space-evenly"},
+  flexEnd: { justifyContent: "flex-end" },
+  flexStart: { justifyContent: "flex-start" },
+
+  itemsFlexStart: { alignItems: 'flex-start'},
   stretchItems: { alignItems: 'stretch', backgroundColor: '#eaeaea' }
 })
 
@@ -37,11 +45,11 @@ export default class FlexView extends Component {
 
   render () {
     let usedStyles = []
+    usedStyles.push(styles.default)
     for (let prop of Object.keys(this.props)) {
       if (styles[prop] && this.props[prop] === true) usedStyles.push(styles[prop])
     }
     
-    usedStyles.push(styles.default)
     let inlineStyles = this.props.style
     if(inlineStyles) usedStyles.push(inlineStyles)
     // style={usedStyles}

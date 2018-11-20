@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import {StyleSheet, ScrollView} from 'react-native';
 import Moment from 'react-moment';
+import {ScrollView} from 'react-native'
 import {getStyles} from '~/globalStyles'
-import {Card, CardItem, Text, Container, Content, Header, Title, Body, Left, Button, Icon, Right, View, Spinner, Grid, Col, Row, List, ListItem, Badge } from 'native-base'
+import {Text, Container, Content, Header, Title, Body, Left, Button, Icon, Right, View, Spinner, Grid, Col, Row, Tabs, Tab } from 'native-base'
 import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import AttendeeAvatar from './show/AttendeeAvatar'
-import {CenteredNotice, Hr, FlexView} from '~/components/layout/'
+import {CenteredNotice, FlexView, Hr} from '~/components/layout/'
 import {SHOW_QUERY} from '~/queries/events/show'
-import Attendees from './show/Attendees'
+import {styles} from "./show/styles"
+import Info from "./show/Info";
+import Talks from "./show/Talks";
 import StatusButton from "./show/StatusButton"
+import Notes from "./show/Notes";
 
 export default class Show extends Component {
   static navigationOptions = ({navigation}) => {
@@ -36,62 +37,49 @@ export default class Show extends Component {
             
             let event
             if (!data) {
-              return <CenteredNotice text="Failed to load the event"/>
+              return <CenteredNotice text="Failed to load the event" />
             } else {
               event = data.event[0]
             }
 
             return (
-              <Content>
+              <React.Fragment>
+                <View style={styles.header}>
+                  <FlexView row>
+                    <FlexView style={styles.date}>
+                      <Moment format="MMM" style={[getStyles('redText')]} filter={(s) => s.toUpperCase()}>{event.beginsAt}</Moment>       
+                      <Moment format="DD" style={[getStyles()]}>{event.beginsAt}</Moment>
+                    </FlexView>
+                    <FlexView style={[styles.nameWrapper]}>
+                      <Text style={styles.name}>{event.name}</Text>
+                      <Text>{event.eventType.name}</Text>
+                    </FlexView>
+                  </FlexView>
 
-                <View>
-                  <Grid>
-                    <Row style={style.header}>
-                      <Col style={style.date} size={1}>
-                        <Moment format="MMM" style={[getStyles('redText')]} filter={(s) => s.toUpperCase()}>{event.beginsAt}</Moment>       
-                        <Moment format="DD" style={[getStyles()]}>{event.beginsAt}</Moment>
-                      </Col>
-                      <Col style={style.nameWrapper} size={4}>
-                        <Text style={style.name}>{event.name}</Text>
-                        <Text>{event.eventType.name}</Text>
-                      </Col>
-                    </Row>
-                  </Grid>
-
-                      <View style={[style.row, style.basePadding]}>
-                        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                          <StatusButton name="Approved" enabled={event.approved} style={style.baseMargin} />
-                          <StatusButton name="Committed" enabled={event.committed} style={style.baseMargin} />
-                          {event.archived && <StatusButton name="Archived" enabledStyle="warning" enabled={event.archived} style={style.baseMargin} />}
-                        </ScrollView>
-                      </View>
-
-                      <Hr hSpace={15} />
-
-                      <FlexView row style={style.basePadding}>
-                        <Icon style={[style.textBox, style.icon]} name="time" />
-                        <Text style={style.textBox}>from</Text>
-                        <Moment format="DD MMM Y" style={[style.textBox, getStyles('bold')]}>{event.beginsAt}</Moment>
-                        <Text style={style.textBox}>to</Text>
-                        <Moment format="DD MMM Y" style={[style.textBox, getStyles('bold')]}>{event.endsAt}</Moment>
-                      </FlexView>
-
-                      <FlexView row style={style.basePadding}>
-                        <Icon style={[style.textBox, style.icon]} name="pin" />
-                        <Text style={style.textBox}>{event.fullLocation}</Text>
-                      </FlexView>
-
-                      <Hr hSpace={15} />
-
-                      <Attendees 
-                          eventName={event.name} 
-                          attendees={event.attendees} 
-                          navigation={this.props.navigation} 
-                          refetch={refetch}
-                          refreshing={loading} />
-
+                  <View style={[styles.row, styles.basePadding]}>
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                      <StatusButton name="Approved" enabled={event.approved} style={styles.baseMargin} />
+                      <StatusButton name="Committed" enabled={event.committed} style={styles.baseMargin} />
+                      {event.archived && <StatusButton name="Archived" enabledStyle="warning" enabled={event.archived} style={styles.baseMargin} />}
+                    </ScrollView>
+                  </View>
                 </View>
-              </Content>
+                <Tabs tabContainerStyle={styles.tabsContainer}>
+                  <Tab heading="Details">
+                    <ScrollView>
+                      <Info event={event} loading={loading} refetch={refetch}/>
+                    </ScrollView>
+                  </Tab>
+
+                  <Tab heading="Talks">
+                    <Talks event={event} loading={loading} refetch={refetch}/>
+                  </Tab>
+
+                  <Tab heading="Notes">
+                    <Notes event={event} loading={loading} refetch={refetch}/>
+                  </Tab>
+                </Tabs>
+              </React.Fragment>
             )
           }}
         </Query>
@@ -99,54 +87,3 @@ export default class Show extends Component {
     );
   }
 }
-
-const style = StyleSheet.create({
-  nameWrapper: {
-    textAlign: 'left',
-    alignItems: 'flex-start',
-  },
-
-  name: {
-    fontSize: 25,
-    fontWeight: 'bold'
-  },
-
-  date: {
-    padding: 10,
-    alignItems: 'center'
-  },
-
-  basePadding: {
-    paddingHorizontal: 10,
-    paddingVertical: 3
-  },
-
-  baseMargin: {
-    marginHorizontal: 2,
-  },
-
-  textBox: {
-    paddingRight: 5,
-    fontSize: 15,
-    // borderWidth: 1
-  },
-
-  icon: {
-    width:35,
-    fontSize: 22,
-    // borderWidth: 1,
-    textAlign: 'center'
-  },
-
-  row: {
-    flexDirection: 'row',
-    alignItems:'center', 
-    justifyContent: 'flex-start',
-  },
-
-  header: {
-    paddingTop: 15
-    // borderBottomColor: '#d1d1d1',
-    // borderBottomWidth: 1
-  }
-})

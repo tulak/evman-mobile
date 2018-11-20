@@ -17,6 +17,12 @@ export const globalStyles = StyleSheet.create({
   verticalAlignCenter: {
     alignItems: 'center',
     textAlignVertical: 'center'
+  },
+
+  emptyList: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexGrow: 1
   }
 });
 

@@ -10,6 +10,9 @@ export const SHOW_QUERY = gql`query showEvent($eventId: Int) {
     approved
     committed
     archived
+    cfpUrl
+    cfpDate
+    description
     eventType {
       id
       name
@@ -17,11 +20,47 @@ export const SHOW_QUERY = gql`query showEvent($eventId: Int) {
     attendees {
       id
       user {
+        id
         name
         avatarUrl
       }
       attendeeType {
+        id
         name
+      }
+    }
+    eventPropertyAssignments {
+      label
+      behaviour
+      values
+    }
+    eventTalks{
+      id
+      description
+      state
+      talk {
+        id
+        name
+        abstract
+        eventType{
+          id
+          name
+        }
+      }
+      user {
+        id
+        name
+        avatarUrl
+      }
+    }
+    eventNotes {
+      id
+      content
+      createdAt
+      user{
+        id
+        name
+        avatarUrl
       }
     }
   }

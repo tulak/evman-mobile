@@ -11,14 +11,14 @@ export default class AttendeeAvatar extends Component {
   }
 
   render () {
-    const {uri, name} = this.props
+    const {uri, name, small} = this.props
 
     let image
     if (uri.startsWith('http')) {
-      image = <Thumbnail source={{uri: uri}} style={{marginBottom: 6, marginRight: 5}}/>
+      image = <Thumbnail small={small} source={{uri: uri}} style={{marginBottom: 6, marginRight: 5}}/>
     } else {
-      image = (<View style={style.noAvatarContainer}>
-                <Text style={style.noAvatar}>{this.extractInitials(name)}</Text>
+      image = (<View style={[style.noAvatarContainer, small && style.smallContainer]}>
+                <Text style={[style.noAvatar, small && style.small]}>{this.extractInitials(name)}</Text>
               </View>)
     }
     
@@ -33,6 +33,7 @@ export default class AttendeeAvatar extends Component {
 let color = "#555"
 let bgColor = "#eaeaea"
 let size = 60
+let smallSize = 40
 
 const style = StyleSheet.create({
   noAvatar: {
@@ -49,5 +50,15 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50
+  },
+
+  small: {
+    fontSize: 20
+  },
+
+  smallContainer: {
+    borderWidth: 2,
+    width: smallSize,
+    height: smallSize
   }
 })
