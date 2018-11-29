@@ -29,18 +29,18 @@ export default class Event extends Component {
     }
 
     return (
-        <ListItem onPress={() => this.props.navigation.navigate('Show', {eventId: event.id})}>
-         <FlexView row>
-            {date}
-            
-            <FlexView flex>
-              <FlexView row style={{alignSelf: 'flex-start'}}>
-                <Text style={[styles.eventListName]}>{event.name}</Text>
-              </FlexView>
-              <Text style={[styles.location]} numberOfLines={1}>{event.fullLocation}</Text>
+      <ListItem onPress={() => this.props.navigation.navigate('Show', {eventId: event.id})}>
+        <FlexView row>
+          {date}
+          
+          <FlexView flex>
+            <FlexView row style={{alignSelf: 'flex-start'}}>
+              <Text style={[styles.eventListName]}>{event.name}</Text>
             </FlexView>
+            <Text style={[styles.location]} numberOfLines={1}>{event.fullLocation}</Text>
           </FlexView>
-        </ListItem>
+        </FlexView>
+      </ListItem>
     );
   }
 }

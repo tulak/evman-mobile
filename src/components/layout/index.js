@@ -1,7 +1,7 @@
-import Hr from './Hr'
-import FlexView from './FlexView'
-import CenteredNotice from './CenteredNotice'
-
-export {
-  Hr, FlexView, CenteredNotice
-}
+export Hr from './Hr'
+export FlexView from './FlexView'
+export CenteredNotice from './CenteredNotice'
+export VSpace from './VSpace'
+export DataField from './DataField'
+export SubHeader from './SubHeader'
+export TextLabel from './TextLabel'

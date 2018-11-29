@@ -14,7 +14,7 @@ export default class AttendeeAvatar extends Component {
     const {uri, name, small} = this.props
 
     let image
-    if (uri.startsWith('http')) {
+    if (uri && uri.startsWith('http')) {
       image = <Thumbnail small={small} source={{uri: uri}} style={{marginBottom: 6, marginRight: 5}}/>
     } else {
       image = (<View style={[style.noAvatarContainer, small && style.smallContainer]}>

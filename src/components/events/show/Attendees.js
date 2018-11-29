@@ -30,7 +30,7 @@ export default class Attendees extends Component {
           <TouchableOpacity style={{flex: 1}} onPress={this.toggleList}>
             <FlexView row>
               {
-                attendees.map((attendee) => (
+                attendees.filter((a) => !!a.user).map((attendee) => (
                   <AttendeeAvatar key={attendee.id} name={attendee.user.name} uri={attendee.user.avatarUrl}/>
                 ))
               }

@@ -38,7 +38,7 @@ export default class Note extends Component {
           </Left>
           <Body>
             <Text>{eventNote.content}</Text>
-            <Moment fromNow element={TextNote}>{eventNote.createdAt}</Moment>
+            <Moment fromNow element={1}>{eventNote.createdAt}</Moment>
           </Body>
         </ListItem>
 

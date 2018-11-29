@@ -18,7 +18,11 @@ export default class Dashboard extends Component {
     return (
       <Container>
         <Header hasTabs>
-          <Left></Left>
+          <Left>
+            <Button transparent>
+              <Icon name='contact' onPress={() => this.props.navigation.navigate('Profile')}/>
+            </Button>
+          </Left>
           <Body>
             <Title>Events</Title>
           </Body>

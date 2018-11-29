@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const SHOW_QUERY = gql`query showEvent($eventId: Int) {
-  event: events(id: $eventId) {
+  events(id: $eventId) {
     id
     name
     beginsAt

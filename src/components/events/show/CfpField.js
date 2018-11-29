@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Linking } from 'react-native';
 import Moment from 'react-moment';
-import { Button, Icon } from 'native-base';
+import { Text, Button, Icon } from 'native-base';
 import FlexView from '../../layout/FlexView';
 import {styles} from "./styles"
 import {getStyles} from '~/globalStyles'

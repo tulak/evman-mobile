@@ -28,6 +28,7 @@ let styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
 
+  center: {justifyContent: 'center'},
   spaceBetween: { justifyContent: 'space-between' },
   spaceAround: { justifyContent: 'space-around' },
   spaceEvenly: { justifyContent: "space-evenly"},
@@ -35,6 +36,7 @@ let styles = StyleSheet.create({
   flexStart: { justifyContent: "flex-start" },
 
   itemsFlexStart: { alignItems: 'flex-start'},
+  itemsCenter: { alignItems: 'center'},
   stretchItems: { alignItems: 'stretch', backgroundColor: '#eaeaea' }
 })
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Modal, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem, Left, Right, Badge, Container, Header, Button, Icon, Body, Title, Subtitle } from 'native-base';
-import {FlexView, Hr, CenteredNotice} from '~/components/layout';
+import {FlexView, Hr, CenteredNotice, DataField} from '~/components/layout';
 import {getStyles} from '~/globalStyles'
 
 export default class EventProperty extends Component {
@@ -42,12 +42,15 @@ export default class EventProperty extends Component {
     return (
       <React.Fragment>
         <TouchableOpacity onPress={this.toggleList}>
-          <FlexView row style={styles.container} spaceBetween>
+          {/* <FlexView row style={styles.container} spaceBetween>
             <Text style={getStyles('bold')}>{label}</Text>
             <Text numberOfLines={1} style={styles.value} ellipsizeMode="tail">{value}</Text>
-          </FlexView>
+          </FlexView> */}
+          <View style={{paddingHorizontal: 10}}>
+            <DataField label={label} value={value}/>
+          </View>
         </TouchableOpacity>
-        <Hr />
+        {/* <Hr /> */}
 
         <Modal visible={this.state.listOpened} animationType='fade' onRequestClose={this.toggleList}>
           <Container>

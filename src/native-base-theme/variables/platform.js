@@ -39,9 +39,11 @@ export default {
   buttonPadding: 6,
   get btnPrimaryBg() {
     return this.brandPrimary;
+    // return 'red';
   },
   get btnPrimaryColor() {
     return this.inverseTextColor;
+    // return 'white'
   },
   get btnInfoBg() {
     return this.brandInfo;

@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, View, StatusBar, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -13,13 +5,14 @@ import { Container, Header, Content, Button, Title, Text, Right, Left, Body, Bad
 import {createBottomTabNavigator} from 'react-navigation-tabs'
 import EventsTab from './components/EventsTab'
 import TalksTab from './components/TalksTab'
+import TeamsTab from './components/TeamsTab'
 
 const routes = [
   {name: 'Events', label: 'Events', icon: 'train', screen: EventsTab },
   {name: 'Talks', label: 'Talks', icon: 'file-text', screen: TalksTab },
   {name: 'Calendar', label: 'Calendar', icon: 'calendar', screen: TalksTab },
-  {name: 'Teams', label: 'Teams', icon: 'group', screen: TalksTab },
-  {name: 'Settings', label: 'Settings', icon: 'cogs', screen: EventsTab },
+  {name: 'Teams', label: 'Teams', icon: 'group', screen: TeamsTab },
+  // {name: 'Settings', label: 'Settings', icon: 'cogs', screen: EventsTab },
 ]
 
 const bottomBarRoutes = routes.map((route) => (
@@ -28,7 +21,7 @@ const bottomBarRoutes = routes.map((route) => (
     navigationOptions: {
       tabBarLabel: route.label,
       tabBarIcon: ({tintColor}) => (
-        <Icon name={route.icon} size={28} color={tintColor} />
+        <Icon name={route.icon} type="FontAwesome" size={28} color={tintColor} />
       )
     }
   }

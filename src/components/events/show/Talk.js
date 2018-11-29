@@ -5,7 +5,7 @@ import { getStyles } from '../../../globalStyles';
 import { Modal } from 'react-native';
 import { styles } from './styles';
 import Markdown from 'react-native-markdown-renderer';
-import {Hr, FlexView, CenteredNotice} from '~/components/layout/'
+import {Hr, FlexView, CenteredNotice, DataField} from '~/components/layout/'
 
 export default class Talk extends Component {
   constructor (props) {
@@ -62,23 +62,15 @@ export default class Talk extends Component {
 
               <Hr />
 
-              <FlexView row spaceBetween style={styles.dataItemContainer}>
-                <Text style={getStyles('bold')}>Given by</Text>
-                <FlexView row flexEnd>
-                  <Text style={styles.basePadding}>{eventTalk.user.name}</Text>
+              <DataField label="Given by">
+                <FlexView row>
                   <AttendeeAvatar small name={eventTalk.user.name} uri={eventTalk.user.avatarUrl} />
+                  <Text>{eventTalk.user.name}</Text>
                 </FlexView>
-              </FlexView>
+              </DataField>
 
-              <FlexView row spaceBetween style={styles.dataItemContainer}>
-                <Text style={getStyles('bold')}>Status</Text>
-                <Text>{status}</Text>
-              </FlexView>
-
-              <FlexView row spaceBetween style={styles.dataItemContainer}>
-                <Text style={getStyles('bold')}>Event type</Text>
-                <Text>{eventTalk.talk.eventType.name}</Text>
-              </FlexView>
+              <DataField label="Status" value={status}/>
+              <DataField label="Event Type" value={eventTalk.talk.eventType.name}/>
             </Content>
           </Container>
         </Modal>

@@ -8,6 +8,8 @@ import { debounce } from 'lodash'
 import {getStyles} from '~/globalStyles'
 import Event from '~/components/events/dashboard/Event'
 
+import * as localState from '~/localState'
+
 export default class Search extends Component {
   constructor(props) {
     super(props)
@@ -48,7 +50,8 @@ export default class Search extends Component {
                       onChangeText={this.search}/>
                   </Item>
                   <Button transparent onPress={() => refetch()}>
-                    <Text style={{color: 'white'}}>Search</Text>
+                    <Icon name="filter" type="FontAwesome" />
+                    {/* <Text style={{color: 'white'}}>Search</Text> */}
                   </Button>
                 </Header>
 

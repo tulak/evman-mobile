@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {ScrollView} from 'react-native';
 import { Text,  Icon, View } from 'native-base'
-import {Hr, FlexView} from '~/components/layout/'
+import {Hr, FlexView, DataField} from '~/components/layout/'
 import Moment from 'react-moment';
 import {getStyles} from '~/globalStyles'
 import Markdown from 'react-native-markdown-renderer';
@@ -41,9 +41,13 @@ export default class Info extends Component {
         
         <Hr />
 
+
+        
+
         <View style={styles.basePadding}>
-          <Text style={{fontWeight: 'bold', fontSize: 13, color: '#555'}}>Description</Text>
-          <Markdown>{event.description}</Markdown>
+          <DataField label="Description">
+            <Markdown>{event.description} </Markdown>
+          </DataField>
         </View>
 
         <EventProperties eventName={event.name} eventPropertyAssignments={event.eventPropertyAssignments} />
