@@ -1,4 +1,4 @@
-package com.evman;
+package org.evman.application;
 
 import android.app.Application;
 
