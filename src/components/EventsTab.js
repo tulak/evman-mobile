@@ -9,7 +9,7 @@ import Search from './events/Search'
 import Profile from './Profile'
 
 const EventsTab = createStackNavigator({
-  Show: Show,
+  EventShow: Show,
   Dashboard: Dashboard,
   Search: Search,
   Profile: Profile

@@ -6,8 +6,6 @@ import {StyleSheet} from 'react-native'
 import {FlexView} from '~/components/layout'
 import { styles } from "../show/styles";
 
-const LOCATION_TRUNCATE = 30
-
 export default class Event extends Component {
   render () {
     let {event, fullDate} = this.props
@@ -29,7 +27,7 @@ export default class Event extends Component {
     }
 
     return (
-      <ListItem onPress={() => this.props.navigation.navigate('Show', {eventId: event.id})}>
+      <ListItem onPress={() => this.props.navigation.navigate('EventShow', {eventId: event.id})}>
         <FlexView row>
           {date}
           
