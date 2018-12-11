@@ -66,7 +66,7 @@ class Calendar extends Component {
     
     if (!events) {
       if (loading) return <CenteredNotice loading header/>
-      else return <CenteredNotice header text="Failed to load teams"/>
+      else return <CenteredNotice header text="Failed to load events"/>
     }
 
     let eventsIndex = this.createEventIndex(events)

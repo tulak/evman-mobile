@@ -3,18 +3,17 @@ import { createStackNavigator } from "react-navigation";
 
 import Show from './talks/Show'
 import List from './talks/List'
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 import mainNavigationOptions from './mainNavigationOptions'
 
 const TalksTab = createStackNavigator({
-  Show: Show,
+  TalkShow: Show,
   List: List
 }, {
   initialRouteName: 'List',
+  headerMode: 'none',
   navigationOptions: {
-    ...mainNavigationOptions,
-    headerRight: <Icon name="user" size={24} style={{color: '#fff', marginRight: 15}}/>
+    ...mainNavigationOptions
   },
 });
 
