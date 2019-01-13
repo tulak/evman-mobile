@@ -3,6 +3,7 @@ import { Query, graphql } from "react-apollo";
 import {FlatList} from 'react-native'
 import {View, Button, Text, Container, Header, Left, Body, Right, Title} from 'native-base'
 import CenteredNotice from '~/components/layout/CenteredNotice'
+import {getStyles} from '~/globalStyles'
 import { LIST_QUERY } from '~/queries/talks';
 import Talk from './list/Talk';
 import localState from '../../localState';
@@ -27,7 +28,7 @@ class List extends Component {
         </Header>
         <FlatList
                 data={talks}
-                
+                contentContainerStyle={talks.length == 0 && getStyles('emptyList')}
                 renderItem={({item}) => (
                   <Talk talk={item} navigation={this.props.navigation} /> 
                 )}
