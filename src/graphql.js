@@ -3,15 +3,16 @@ import { persistCache } from 'apollo-cache-persist';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { AsyncStorage } from 'react-native';
 import localState from './localState'
+import to from 'await-to-js'
 
-export function createClient(uri) {
+export async function createClient(uri) {
 
   const cache = new InMemoryCache({});
 
-  persistCache({
+  let [_, __] = await to(persistCache({
     cache,
     storage: AsyncStorage,
-  });
+  }));
 
   const defaultOptions = {
     watchQuery: {

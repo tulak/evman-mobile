@@ -46,19 +46,9 @@ export default class Login extends Component {
   async init () {
     await localState.preload()
     let loggedIn = !!localState.userToken
-    let client = loggedIn ? createClient(this.graphqlEndPoint) : null
-    
-    if (client) {
-      let [_, res] = await to(client.query({
-        query: PROFILE_QUERY,
-        fetchPolicy: 'network-only'
-      }))
-
-      if (res) {
-        const {data} = res
-        const user = data.me
-        localState.teamID = user.teams[0].id
-      }
+    let client = null
+    if(loggedIn) {
+      [_, client] = await to(createClient(this.graphqlEndPoint))
     }
 
     this.setState({
