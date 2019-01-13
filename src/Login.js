@@ -23,7 +23,8 @@ export default class Login extends Component {
       focused: false,
       error: null,
       serverUrl: DEFAULT_SERVER_URL,
-      client: null
+      client: null,
+      loading: false,
     };
 
     this.init()
@@ -94,7 +95,11 @@ export default class Login extends Component {
         'Content-Type': 'application/json'
       }
     }
+    
+    this.setState({loading: true})
     let [netErr, response] = await to(fetch(this.graphqlAuthUrl(provider), options))
+    this.setState({loading: false})
+    
     if (netErr) return this.setError("Network Error occured.")
 
     let [intErr, data] = await to(response.json())
@@ -113,7 +118,7 @@ export default class Login extends Component {
   }
 
   render() {
-    const {client, loggedIn, error, initialised} = this.state
+    const {client, loggedIn, error, initialised, loading} = this.state
 
     if (!initialised) return (<CenteredNotice text="Initializing"><Spinner /></CenteredNotice>)
 
@@ -130,6 +135,7 @@ export default class Login extends Component {
       </CenteredNotice>
     )
 
+    if (loading) return <CenteredNotice text="Logging in ..." loading={true} />
 
     return (
       <Container>
