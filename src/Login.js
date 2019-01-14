@@ -49,6 +49,19 @@ export default class Login extends Component {
     let client = null
     if(loggedIn) {
       [_, client] = await to(createClient(this.graphqlEndPoint))
+
+      if(!localState.teamID) {
+        const [err, res] = await to(client.query({
+          query: PROFILE_QUERY,
+          fetchPolicy: 'network-only'
+        }))
+
+        if (res) {
+          const {data} = res
+          const user = data.me
+          localState.teamID = user.teams[0].id
+        }
+      }
     }
 
     this.setState({
