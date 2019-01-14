@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 import { View, Container, Header, Content, Button, Title, Item, Input, Text, Tabs, Tab, ScrollableTab, Body, Right, Left, Icon, List} from 'native-base';
 import EventList from './dashboard/EventList'
 
-import {TRACKED_EVENTS_QUERY, COMMITTED_EVENTS_QUERY, CFP_DEADLINE_EVENTS_QUERY} from '~/queries/events/dashboard'
+import {TRACKED_EVENTS_QUERY, COMMITTED_EVENTS_QUERY, CFP_DEADLINE_EVENTS_QUERY} from '~/queries/events'
 
 
 export default class Dashboard extends Component {

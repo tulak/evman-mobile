@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Query } from "react-apollo";
 import { Container, Header, Content, Button, Title, Text, Right, Left, Body, Badge, Footer, FooterTab, ListItem, Item, Input, Icon } from 'native-base';
-import {SEARCH_EVENTS_QUERY} from '~/queries/events/search'
+import {SEARCH_EVENTS_QUERY} from '~/queries/events'
 import {CenteredNotice, FlexView, Hr} from '~/components/layout/'
 import { FlatList } from 'react-native';
 import { debounce } from 'lodash'

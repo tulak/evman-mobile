@@ -5,7 +5,7 @@ import {getStyles} from '~/globalStyles'
 import {Text, Container, Content, Header, Title, Body, Left, Button, Icon, Right, View, Spinner, Grid, Col, Row, Tabs, Tab } from 'native-base'
 import { Query, graphql } from "react-apollo";
 import {CenteredNotice, FlexView, Hr} from '~/components/layout/'
-import {SHOW_QUERY} from '~/queries/events/show'
+import {SHOW_QUERY} from '~/queries/events'
 import {styles} from "./show/styles"
 import Info from "./show/Info";
 import Talks from "./show/Talks";
@@ -53,8 +53,8 @@ class Show extends Component {
 
             <View style={[styles.row, styles.basePadding]}>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <StatusButton name="Approved" enabled={event.approved} style={styles.baseMargin} />
-                <StatusButton name="Committed" enabled={event.committed} style={styles.baseMargin} />
+                <StatusButton eventId={event.id} name="Approved" enabled={event.approved} style={styles.baseMargin} />
+                <StatusButton eventId={event.id} name="Committed" enabled={event.committed} style={styles.baseMargin} />
                 {event.archived && <StatusButton name="Archived" enabledStyle="warning" enabled={event.archived} style={styles.baseMargin} />}
               </ScrollView>
             </View>
