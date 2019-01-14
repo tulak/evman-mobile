@@ -25,7 +25,13 @@ class Profile extends Component {
 
     if (!me) {
       if (loading) return <CenteredNotice loading header navigation={this.props.navigation}/>
-      else return <CenteredNotice header navigation={this.props.navigation} text="Failed to load profile"/>
+      else return (
+        <CenteredNotice header navigation={this.props.navigation} text="Failed to load profile">
+          <Button block danger onPress={this.logout}>
+            <Text>Logout</Text>
+          </Button>
+        </CenteredNotice>
+      )
     }
 
     let user = me
