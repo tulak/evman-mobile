@@ -37,7 +37,7 @@ let styles = StyleSheet.create({
 
   itemsFlexStart: { alignItems: 'flex-start'},
   itemsCenter: { alignItems: 'center'},
-  stretchItems: { alignItems: 'stretch', backgroundColor: '#eaeaea' }
+  stretchItems: { alignItems: 'stretch'}
 })
 
 export default class FlexView extends Component {

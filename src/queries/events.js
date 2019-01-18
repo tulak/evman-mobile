@@ -7,12 +7,19 @@ export const SHOW_QUERY = gql`query showEvent($eventId: Int) {
     beginsAt
     endsAt
     fullLocation
+    location
     approved
     committed
     archived
     cfpUrl
     cfpDate
     description
+    sponsorship
+    sponsorshipDate
+    url
+    url2
+    url3
+
     eventType {
       id
       name
@@ -129,9 +136,55 @@ export const UPDATE_EVENT_MUTATION = gql`mutation updateEvent($eventId:ID!, $att
     event {
       id
       name
+      beginsAt
+      endsAt
+      fullLocation
       approved
       committed
+      archived
+      cfpUrl
+      cfpDate
+      description
+      location
+      sponsorship
+      sponsorshipDate
+      url
+      url2
+      url3
+      eventType {
+        id
+        name
+      }
     }
-    errors
+    errors {
+      name
+      messages
+    }
+
+    globalErrors
+  }
+}`
+
+export const FORM_PARAMS_QUERY = gql`query {
+  team {
+    id
+    name
+    eventTypes {
+      id
+      name
+    }
+    eventProperties {
+      id
+      name
+      position
+      behaviour
+      required
+      
+      options {
+        id
+        name
+      }
+    }
+    
   }
 }`

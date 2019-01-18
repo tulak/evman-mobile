@@ -13,6 +13,7 @@
     "apollo-client": "^2.4.6",
     "await-to-js": "^2.1.0",
     "babel-core": "^6.26.3",
+    "formik": "^1.4.2",
     "graphql": "^14.0.2",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
